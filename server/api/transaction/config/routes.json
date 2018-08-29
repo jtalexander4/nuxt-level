@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/transaction",
+      "handler": "Transaction.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/transaction/count",
+      "handler": "Transaction.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/transaction/:id",
+      "handler": "Transaction.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/transaction",
+      "handler": "Transaction.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/transaction/:id",
+      "handler": "Transaction.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/transaction/:id",
+      "handler": "Transaction.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/transaction/:id/relationships/:relation",
+      "handler": "Transaction.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/transaction/:id/relationships/:relation",
+      "handler": "Transaction.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/transaction/:id/relationships/:relation",
+      "handler": "Transaction.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

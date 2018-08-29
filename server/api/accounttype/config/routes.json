@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/accounttype",
+      "handler": "Accounttype.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/accounttype/count",
+      "handler": "Accounttype.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/accounttype/:id",
+      "handler": "Accounttype.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/accounttype",
+      "handler": "Accounttype.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/accounttype/:id",
+      "handler": "Accounttype.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/accounttype/:id",
+      "handler": "Accounttype.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/accounttype/:id/relationships/:relation",
+      "handler": "Accounttype.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/accounttype/:id/relationships/:relation",
+      "handler": "Accounttype.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/accounttype/:id/relationships/:relation",
+      "handler": "Accounttype.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

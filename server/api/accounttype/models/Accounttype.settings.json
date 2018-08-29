@@ -1,0 +1,30 @@
+{
+  "connection": "default",
+  "collectionName": "accounttypes",
+  "info": {
+    "name": "accounttype",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "name": {
+      "default": "",
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "credit_positive": {
+      "default": false,
+      "type": "boolean",
+      "required": true
+    },
+    "accounts": {
+      "collection": "account",
+      "via": "account_type_id"
+    }
+  }
+}

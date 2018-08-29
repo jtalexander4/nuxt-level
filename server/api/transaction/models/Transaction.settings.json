@@ -1,0 +1,29 @@
+{
+  "connection": "default",
+  "collectionName": "transactions",
+  "info": {
+    "name": "transaction",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "account": {
+      "model": "account",
+      "via": "transactions"
+    },
+    "amount": {
+      "default": "",
+      "type": "decimal",
+      "required": true
+    },
+    "date_posted": {
+      "default": "",
+      "type": "date",
+      "required": true
+    }
+  }
+}

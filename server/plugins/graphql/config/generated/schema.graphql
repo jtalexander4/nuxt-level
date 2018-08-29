@@ -1,0 +1,102 @@
+type Account {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  account_type_id: Accounttype
+  parent_account_id: Account
+  accounts(sort: String, limit: Int, start: Int, where: JSON): [Account]
+  transactions(sort: String, limit: Int, start: Int, where: JSON): [Transaction]
+}
+
+type Accounttype {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  credit_positive: Boolean!
+  accounts(sort: String, limit: Int, start: Int, where: JSON): [Account]
+}
+
+"""
+The `DateTime` scalar represents a date and time following the ISO 8601 standard
+"""
+scalar DateTime
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+union Morph = Account | Accounttype | Transaction | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+
+type Query {
+  account(id: ID!): Account
+  accounts(sort: String, limit: Int, start: Int, where: JSON): [Account]
+  accounttype(id: ID!): Accounttype
+  accounttypes(sort: String, limit: Int, start: Int, where: JSON): [Accounttype]
+  transaction(id: ID!): Transaction
+  transactions(sort: String, limit: Int, start: Int, where: JSON): [Transaction]
+  files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  role(id: ID!): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsRole]
+  user(id: ID!): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type Transaction {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  account: Account
+  amount: String!
+  date_posted: DateTime!
+}
+
+type UploadFile {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  hash: String!
+  sha256: String
+  ext: String
+  mime: String!
+  size: String!
+  url: String!
+  provider: String!
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UsersPermissionsPermission {
+  id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsUser {
+  id: ID!
+  username: String!
+  email: String!
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+}
